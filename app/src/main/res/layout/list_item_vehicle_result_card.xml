@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mtrl_card_margin"
+        android:layout_marginEnd="@dimen/mtrl_card_margin"
+        android:layout_marginTop="@dimen/mtrl_card_margin_half"
+        android:layout_marginBottom="@dimen/mtrl_card_margin_half"
+        app:cardElevation="4dp"
+        android:layout_width="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_margin="16dp">
+
+        <TextView android:id="@+id/statusTime"
+                  android:textSize="18sp"
+                  android:textStyle="bold"
+                  android:layout_marginBottom="@dimen/result_card_offset"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/vehicleNumber"
+                  android:textSize="15sp"
+                  android:layout_marginTop="@dimen/result_card_offset"
+                  android:layout_marginBottom="@dimen/result_card_offset"
+                  android:textStyle="bold"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/routeNumber"
+                  style="@style/RouteLozengeTheme"
+                  android:layout_marginTop="@dimen/result_card_offset"
+                  android:layout_marginBottom="@dimen/result_card_offset"
+                  android:textSize="@dimen/route_lozenge_small_textsize"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:layout_marginTop="@dimen/result_card_offset"
+                  android:layout_marginBottom="@dimen/result_card_offset"
+                  android:id="@+id/dirDesc"/>
+
+        <TextView android:id="@+id/statusLocation"
+                  android:layout_width="wrap_content"
+                  android:textSize="15sp"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_vertical"
+                  android:layout_marginTop="@dimen/result_card_offset"
+                  android:drawableStart="@drawable/ic_baseline_location_on_24px"
+                  android:drawablePadding="@dimen/result_card_offset"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

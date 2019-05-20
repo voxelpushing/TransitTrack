@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TransitTrack</string>
+    <string name="vehicle_number_hint">Vehicle Number</string>
+    <string name="track">Track</string>
+    <string name="error">An error has occurred. Please try again later.</string>
+    <string name="NIS">Not in Service</string>
+    <string name="emptyPrompt">To record a result, enter the TTC vehicle number you\'re travelling on!</string>
+    <string name="pastResults">Past Results</string>
+    <string name="location">: %1$s, %2$s</string>
+    <string name="view_all_results">View all results</string>
+    <string name="vehicle_number">Vehicle %s</string>
+
+    <string name="acknowledgements">Acknowledgements</string>
+    <string name="busIcon">Bus icon made by Smashicons from www.flaticon.com</string>
+</resources>

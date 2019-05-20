@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mtrl_card_margin">32dp</dimen>
+    <dimen name="mtrl_card_margin_half">8dp</dimen>
+    <dimen name="route_lozenge_textsize">18sp</dimen>
+    <dimen name="route_lozenge_small_textsize">14sp</dimen>
+    <dimen name="result_card_offset">2dp</dimen>
+
+</resources>

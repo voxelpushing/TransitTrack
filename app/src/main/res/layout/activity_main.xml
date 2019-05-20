@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context="MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            style="@style/AppbarTheme"
+            android:layout_height="?attr/actionBarSize" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+            android:layout_width="280dp"
+            android:layout_height="56dp"
+            android:hint="@string/vehicle_number_hint" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:id="@+id/textInput" android:inputType="number"
+            android:importantForAutofill="no" app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintVertical_bias="0.335"/>
+
+    <Button
+            android:text="@string/track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PrimaryButtonTheme"
+            android:id="@+id/track_button" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/textInput" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"/>
+
+    <com.google.android.material.card.MaterialCardView android:layout_width="0dp"
+                                                       android:layout_height="198dp"
+                                                       app:layout_constraintEnd_toEndOf="parent"
+                                                       android:layout_marginEnd="@dimen/mtrl_card_margin"
+                                                       app:layout_constraintStart_toStartOf="parent"
+                                                       android:layout_marginStart="@dimen/mtrl_card_margin"
+                                                       android:layout_marginBottom="@dimen/mtrl_card_margin"
+                                                       app:layout_constraintBottom_toBottomOf="parent"
+                                                       android:layout_marginTop="@dimen/mtrl_card_margin"
+                                                       app:layout_constraintTop_toBottomOf="@+id/track_button"
+                                                       app:cardElevation="8dp"
+                                                       app:layout_constraintVertical_bias="0.37">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                           android:layout_height="match_parent">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/loadingIndicator"
+                    style="@style/SpinKitView.Pulse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/colorAccent" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                    android:id="@+id/statusDisplay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    android:orientation="vertical" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" android:layout_marginTop="16dp" android:layout_marginStart="16dp">
+
+                <TextView
+                        android:id="@+id/vehicle_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textStyle="bold"
+                        android:textSize="21sp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/routeNumber"
+                          android:layout_marginTop="12dp"
+                          style="@style/RouteLozengeTheme"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/routeDesc"
+                          android:textSize="14sp"
+                          android:layout_marginTop="16dp"
+                          app:layout_constraintTop_toBottomOf="@+id/routeNumber"
+                          app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView android:id="@+id/statusLocation"
+                          android:layout_width="wrap_content"
+                          android:textSize="14sp"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:layout_marginTop="12dp"
+                          android:drawableStart="@drawable/ic_baseline_location_on_24px"
+                          android:drawablePadding="@dimen/result_card_offset"/>
+
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/emptyResult"
+                          android:layout_width="0dp" android:layout_height="0dp"
+                          app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          android:orientation="horizontal"
+                          app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="50dp"
+                          android:layout_marginBottom="50dp" android:layout_marginStart="40dp"
+                          android:layout_marginEnd="40dp">
+
+                <ImageView android:layout_width="wrap_content" android:layout_height="match_parent"
+                           android:scaleType="fitCenter"
+                           android:adjustViewBounds="true"
+                           android:src="@drawable/ic_bus_stop" tools:ignore="ContentDescription"
+                           android:layout_gravity="start"/>
+
+                <TextView android:layout_marginStart="16dp" android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:gravity="center_vertical"
+                          android:textStyle="bold"
+                          app:autoSizeTextType="uniform"
+                          android:text="@string/emptyPrompt"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+            android:text="@string/view_all_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SecondaryButtonTheme"
+            android:id="@+id/viewAllResultsButton" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+            android:layout_marginEnd="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
