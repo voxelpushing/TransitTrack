@@ -21,6 +21,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        buildTypes.each{
+            it.buildConfigField 'String', 'baseURL', API_BASE_URL
+            it.resValue 'string', 'base_url', API_BASE_URL
+            it.buildConfigField 'String', 'vehicleLocationURL', VEHICLE_LOCATION_URL
+            it.resValue 'string', 'vehicle_location_url', VEHICLE_LOCATION_URL
+            it.buildConfigField 'String', 'routeConfigURL', ROUTE_CONFIG_URL
+            it.resValue 'string', 'route_config_url', ROUTE_CONFIG_URL
+        }
     }
 }
 
