@@ -19,14 +19,14 @@
 
     <EditText
             android:layout_width="280dp"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:hint="@string/vehicle_number_hint" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/textInput" android:inputType="number"
             android:importantForAutofill="no" app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintVertical_bias="0.335"/>
+            app:layout_constraintVertical_bias="0.19"/>
 
     <Button
             android:text="@string/track"
@@ -44,12 +44,11 @@
                                                        android:layout_marginEnd="@dimen/mtrl_card_margin"
                                                        app:layout_constraintStart_toStartOf="parent"
                                                        android:layout_marginStart="@dimen/mtrl_card_margin"
-                                                       android:layout_marginBottom="@dimen/mtrl_card_margin"
-                                                       app:layout_constraintBottom_toBottomOf="parent"
                                                        android:layout_marginTop="@dimen/mtrl_card_margin"
                                                        app:layout_constraintTop_toBottomOf="@+id/track_button"
                                                        app:cardElevation="8dp"
-                                                       app:layout_constraintVertical_bias="0.37">
+                                                       android:layout_marginBottom="8dp"
+                                                       app:layout_constraintBottom_toTopOf="@+id/viewAllResultsButton">
 
         <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                            android:layout_height="match_parent">
