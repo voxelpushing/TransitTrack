@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
 import com.voxelpushing.transittrack.models.ResponseState
@@ -27,17 +27,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Update UI when results are fetched
-        val model = ViewModelProviders.of(this).get(TrackingViewModel::class.java)
+        val model = ViewModelProvider(this).get(TrackingViewModel::class.java)
         model.getStatus().observe(this, Observer { data ->
             when (data.responseState) {
                 ResponseState.SUCCESS -> data.vehicleStatus?.let {
                     findViewById<View>(R.id.loadingIndicator).visibility = View.GONE
-                    updateCard(it)
+                    updateResultCard(it)
                 }
                 ResponseState.ERROR -> {
                     findViewById<View>(R.id.loadingIndicator).visibility = View.GONE
                     findViewById<View>(R.id.statusDisplay).visibility = View.GONE
-                    Snackbar.make(findViewById(R.id.track_button), R.string.error, LENGTH_SHORT).show()
+                    Snackbar.make(findViewById(R.id.track_button), R.string.error, LENGTH_SHORT)
+                        .show()
                     findViewById<View>(R.id.emptyResult).visibility = View.VISIBLE
                 }
                 ResponseState.LOADING -> {
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateCard(vehicleStatus: VehicleStatus) {
+    private fun updateResultCard(vehicleStatus: VehicleStatus) {
         findViewById<View>(R.id.statusDisplay)?.visibility = View.VISIBLE
 
         findViewById<TextView>(R.id.vehicle_number)?.text =
@@ -109,10 +110,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideKeyboard() {
         val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager
-        var view = currentFocus
-        if (view == null) {
-            view = View(this)
-        }
+        val view = currentFocus ?: View(this)
         imm?.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.voxelpushing.transittrack.models.VehicleStatus
@@ -22,7 +22,11 @@ class PastResultsListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var listAdapter: VehicleStatusListAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_past_results_list, container, false)
     }
 
@@ -39,7 +43,7 @@ class PastResultsListFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val model = ViewModelProviders.of(activity!!).get(DatabaseViewModel::class.java)
+        val model = ViewModelProvider(activity!!).get(DatabaseViewModel::class.java)
         model.getAllVehicleResults().observe(this, Observer { data ->
             listAdapter.setData(data)
             view?.findViewById<View>(R.id.recyclerView)?.visibility = View.VISIBLE
@@ -52,7 +56,8 @@ class PastResultsListFragment : Fragment() {
         private var data: List<VehicleStatus>? = null
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleStatusViewHolder {
-            val view = LayoutInflater.from(context).inflate(R.layout.list_item_vehicle_result_card, parent, false)
+            val view = LayoutInflater.from(context)
+                .inflate(R.layout.list_item_vehicle_result_card, parent, false)
             return VehicleStatusViewHolder(view)
         }
 
@@ -72,7 +77,8 @@ class PastResultsListFragment : Fragment() {
         }
     }
 
-    private inner class VehicleStatusViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private inner class VehicleStatusViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
 
         private val vehicleNumberTV: TextView = itemView.vehicleNumber
         private val timeTV: TextView = itemView.statusTime
